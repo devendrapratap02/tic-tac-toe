@@ -9,28 +9,42 @@ class App extends Component {
 
 		this.handleClick = this.handleClick.bind(this);
 		this.checkGameStatus = this.checkGameStatus.bind(this);
+
+		this.magicSquare = [
+			[8, 1, 6],
+			[3, 5, 7],
+			[4, 9, 2]
+		];
+
+		this.player1 = [
+			[], [], []
+		];
+
+		this.player2 = [
+			[], [], []
+		];
 	}
 
 	componentWillMount() {
 		this.setState({
-			cells: Array(9).fill(' '),
-			p1: [],
-			p2: []
+			cells: Array(9).fill(' ')
 		});
 	}
 
 	handleClick(index) {
 
-		let { cells, p1, p2 } = this.state;
+		let { cells } = this.state;
 		if(cells[index] !== ' ') return;
 
-		let count = this.state.p1.length + this.state.p2.length;
+		let count = cells.reduce((count, cell) => { if(cell != ' ') return count+1; else return count; }, 0)
 		if(count%2) {
 			p1.push(index);
 			cells[index] = 'X';
+			player = p1;
 		} else {
 			p2.push(index);
 			cells[index] = 'O';
+			player = p2;
 		}
 
 		
@@ -41,7 +55,7 @@ class App extends Component {
 			return;
 		};
 
-		this.checkGameStatus({cells, p1, p2});
+		this.checkGameStatus({cells, p1, p2, player: player.sort()});
 	}
 
 	checkGameStatus(newState) {
