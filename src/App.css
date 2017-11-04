@@ -74,3 +74,32 @@
 .cursor-disable {
     cursor: not-allowed;
 }
+
+.btn-toolbar button {
+  margin: 10px auto;
+  width: 25%;
+  background: #222;
+  color: #fff;
+  float: none !important;
+}
+.btn-toolbar button:hover {
+  color: #fff;
+  font-weight: bold;
+}
+
+.win-row{
+  height: 200px;
+position: absolute;
+z-index: 100;
+text-align: center;
+width: 100%;
+background: #eee;
+vertical-align: top;
+display: table;
+margin-top: 75px;
+}
+.win-row p{
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2em;
+}
